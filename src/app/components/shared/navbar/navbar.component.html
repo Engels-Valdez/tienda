@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" [routerLink]="['/home']"><img src="assets/img/logo.png" width="30" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active" >
+          <a class="nav-link" [routerLink]="['/home']">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/perfil']" *ngIf="this.auth.loggedIn">Perfil <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <div class="form-inline my-2 my-lg-0 mr-3">
+        <mat-form-field class="example-form-field mr-2">
+          <mat-label style="color: black;">Buscar producto</mat-label>
+          <input matInput type="text" [(ngModel)]="termino" (keyup)="setBusqueda(termino)"> 
+          <button mat-button *ngIf="termino" matSuffix mat-icon-button aria-label="Clear" (click)="termino=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        
+        <button mat-flat-button color="primary">Buscar</button>
+      </div>
+      <p class="mr-3 mt-3">
+        <mat-icon aria-hidden="false" class="mouse" aria-label="Example home icon" [routerLink]="['/carrito']">shopping_cart</mat-icon>
+        <span [matBadge]="total()" matBadgeOverlap="false"></span>
+      </p>
+      <p class="mr-3 ml-3 mt-3">
+        <button class="btn btn-sm btn-outline-primary" *ngIf="!this.auth.loggedIn" (click)="iniciar()">Iniciar</button>
+        <button class="btn btn-sm btn-outline-danger" *ngIf="this.auth.loggedIn" (click)="salir()">Salir</button>
+      </p>
+
+    </div>
+  </nav>

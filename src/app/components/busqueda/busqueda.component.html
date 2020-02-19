@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card-columns">
+        <div class="card mt-5" *ngFor="let producto of productos">
+
+          <mat-card class="example-card animated fadeIn">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image mt-3 ml-1"><img mat-card-image [src]="producto.img" alt="Photo of a Shiba Inu" class="img-head"></div>
+              <mat-card-title>{{producto.nombre}}</mat-card-title>
+              <mat-card-subtitle>{{producto.modelo}}</mat-card-subtitle>
+            </mat-card-header>
+            <br>
+            <a [href]="producto.img" class="fresco animated fadeIn slow"><img mat-card-image [src]="producto.img" alt="Photo of a Shiba Inu"></a>
+            <mat-card-content>
+              <p>
+                {{producto.detalle | vermas }}. <a [routerLink]="['/detalle',producto.id]">Ver mas</a>
+              </p>
+              <p><b>Precio</b>: {{producto.precio | number}} $</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button (click)="agregar(producto)">Agregar al carrito</button>
+            </mat-card-actions>
+          </mat-card>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-11">
+      <div class="mt-5">
+        <h1>Carrito de compras <span *ngIf="this.data[0].length == 0">vacio</span></h1>
+        <hr>
+        <table class="table table-borderless animated fadeIn">
+          <tbody>
+            <tr *ngFor="let item of data[0]" class="animated fadeIn slow">
+              <th><img [src]="item.img" width="100"></th>
+              <td>{{item.nombre}}</td>
+              <td>{{item.precio | number}}</td>
+              <td>
+                <button class="btn btn-sm btn-danger btn-block mr-1" (click)="eliminarItems(item.id)"><i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+            <tr *ngIf="this.data[0].length > 0">
+              <td><a [routerLink]="['/home']" class="btn btn-warning btn-sm btn-block">Continuar</a></td>
+              <td></td>
+              <td>Total: {{total() | number}} $</td>
+              <td><button class="btn btn-primary btn-sm" (click)="pagar()" >Pagar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="mt-5 animated fadeIn slow">
+        <a [href]="productos.img" class="fresco"><img [src]="productos.img" width="350" alt=""></a>
+        <a [routerLink]="['/home']" class="btn btn-sm mt-3 mr-2" mat-flat-button color="primary">Regresar</a>
+        <a class="btn btn-sm mt-3" *ngIf="!asyn" mat-raised-button (click)="agregar( productos )">Agregar al carrito de compras</a>
+        <a class="btn btn-sm mt-3" [disabled]="asyn" *ngIf="asyn" mat-raised-button>Agregando... <i class="fas fa-redo-alt fa-spin"></i></a>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="mt-5 ml-5 animated fadeIn slow">
+        <h1>{{productos.nombre}}</h1>
+        <hr>
+        <p class="lead">{{ productos.detalle }}</p>
+        <p><b>Marca: </b>{{ productos.marcha }}</p>
+        <p><b>Modelo: </b>{{ productos.modelo }}</p>
+        <p><b>Precio:</b> {{ productos.precio | number }}$ </p>
+      </div>
+    </div>
+  </div>
+</div>
